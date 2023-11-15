@@ -1,1 +1,13 @@
-# Financial_System_01
+Financial system... 
+
+BACKEND
+- DDD (Domain Driven Design)
+- Identity Microsoft: User Management
+- Framework: ASP.NET 7
+- Programming language: C#
+- SQL Server Database
+
+FRONTEND
+- Angular
+- Typescript
+- CSS
