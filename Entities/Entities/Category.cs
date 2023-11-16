@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Entities.Entities
 {
     [Table("Categories")]
-    public class Categories : Base
+    public class Category : Base
     {
 
         [ForeignKey("FinancialSystem")]

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Entities.Entities
 {
     [Table("Expenses")]
-    public class Expenses : Base
+    public class Expense : Base
     {
         public decimal Price { get; set; }
         public int Month {  get; set; }
@@ -26,6 +26,6 @@ namespace Entities.Entities
         [ForeignKey("Categories")]
         [Column(Order = 1)]
         public int CategoriesId { get; set; }
-        public virtual Categories Categories { get; set; }
+        public virtual Category Categories { get; set; }
     }
 }
