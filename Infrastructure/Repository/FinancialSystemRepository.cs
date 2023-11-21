@@ -1,6 +1,8 @@
 ﻿using Domain.Interfaces.IFinancialSystem;
 using Entities.Entities;
+using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,23 @@ namespace Infrastructure.Repository
 {
     public class FinancialSystemRepository : GenericsRepository<FinancialSystem>, InterfaceFinancialSystem
     {
-        public Task<IList<FinancialSystem>> FinancialSystemUserList(string emailUser)
+        private readonly DbContextOptions<ContextBase> _OptoinBuilder;
+
+        public FinancialSystemRepository()
         {
-            throw new NotImplementedException();
+            _OptoinBuilder = new DbContextOptions<ContextBase>();
+        }
+
+        public async Task<IList<FinancialSystem>> FinancialSystemsUserList(string emailUser)
+        {
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                return await
+                    (from fs in db.FinancialSystem
+                     join fsu in db.FinancialSystemUser on fs.Id equals fsu.SystemId
+                     where fsu.UserEmail.Equals(emailUser) 
+                     select fs).AsNoTracking().ToListAsync();
+            }
         }
     }
 }

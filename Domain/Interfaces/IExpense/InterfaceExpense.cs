@@ -11,7 +11,7 @@ namespace Domain.Interfaces.IExpenses
 {
     public interface InterfaceExpense : InterfaceGeneric<Expense>
     {
-        Task<IList<Expense>> UserExpenseList(string emailUser);
-        Task<IList<Expense>> UserExpenseListNotPayingPreviousMonths(string emailUser);
+        Task<IList<Expense>> UserExpensesList(string emailUser);
+        Task<IList<Expense>> UserExpensesListNotPayingPreviousMonths(string emailUser);
     }
 }

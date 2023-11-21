@@ -1,6 +1,8 @@
 ﻿using Domain.Interfaces.IFinancialSystemUser;
 using Entities.Entities;
+using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +13,42 @@ namespace Infrastructure.Repository
 {
     public class FinancialSystemUserRepository : GenericsRepository<FinancialSystemUser>, InterfaceFinancialSystemUser
     {
-        public Task<IList<FinancialSystemUser>> FinancialSystemUsersList(int systemId)
+        private readonly DbContextOptions<ContextBase> _OptoinBuilder;
+
+        public FinancialSystemUserRepository()
         {
-            throw new NotImplementedException();
+            _OptoinBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public Task<FinancialSystemUser> GetUsersByEmail(string emailUser)
+        public async Task<IList<FinancialSystemUser>> FinancialSystemUsersList(int systemId)
         {
-            throw new NotImplementedException();
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                return await
+                    db.FinancialSystemUser
+                    .Where(fs => fs.SystemId == systemId)
+                    .AsNoTracking().ToListAsync();
+            }
         }
 
-        public Task RemoveUsers(List<FinancialSystemUser> users)
+        public async Task<FinancialSystemUser> GetUsersByEmail(string emailUser)
         {
-            throw new NotImplementedException();
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                return await
+                    db.FinancialSystemUser.AsNoTracking().FirstOrDefaultAsync(x => x.UserEmail.Equals(emailUser));
+            }
+        }
+
+        public async Task RemoveUsers(List<FinancialSystemUser> users)
+        {
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                db.FinancialSystemUser
+                .RemoveRange(users);
+
+                await db.SaveChangesAsync();
+            }
         }
     }
 }

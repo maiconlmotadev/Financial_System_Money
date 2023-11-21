@@ -1,7 +1,9 @@
 ﻿using Domain.Interfaces.Generics;
 using Domain.Interfaces.IExpenses;
 using Entities.Entities;
+using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +14,39 @@ namespace Infrastructure.Repository
 {
     public class ExpenseRepository : GenericsRepository<Expense>, InterfaceExpense
     {
-        public Task<IList<Expense>> UserExpenseList(string emailUser)
+        private readonly DbContextOptions<ContextBase> _OptoinBuilder;
+
+        public ExpenseRepository()
         {
-            throw new NotImplementedException();
+            _OptoinBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public Task<IList<Expense>> UserExpenseListNotPayingPreviousMonths(string emailUser)
+        public async Task<IList<Expense>> UserExpensesList(string emailUser)
         {
-            throw new NotImplementedException();
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                return await
+                    (from fs in db.FinancialSystem
+                     join c in db.Category on fs.Id equals c.SystemId
+                     join fsu in db.FinancialSystemUser on fs.Id equals fsu.SystemId
+                     join e in db.Expense on c.Id equals e.CategoriesId
+                     where fsu.UserEmail.Equals(emailUser) && fs.Month == e.Month && fs.Year == e.Year
+                     select e).AsNoTracking().ToListAsync();
+            }
+        }         
+
+        public async Task<IList<Expense>> UserExpensesListNotPayingPreviousMonths(string emailUser)
+        {
+            using (var db = new ContextBase(_OptoinBuilder))
+            {
+                return await
+                    (from fs in db.FinancialSystem
+                     join c in db.Category on fs.Id equals c.SystemId
+                     join fsu in db.FinancialSystemUser on fs.Id equals fsu.SystemId
+                     join e in db.Expense on c.Id equals e.CategoriesId
+                     where fsu.UserEmail.Equals(emailUser) && e.Month < DateTime.Now.Month && !e.Paid
+                     select e).AsNoTracking().ToListAsync();
+            }
         }
     }
 }
