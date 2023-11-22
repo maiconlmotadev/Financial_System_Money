@@ -8,6 +8,8 @@ using Infrastructure.Repository;
 using Domain.Interfaces.IExpenses;
 using Domain.Interfaces.IFinancialSystem;
 using Domain.Interfaces.IFinancialSystemUser;
+using Domain.Interfaces.IServices;
+using Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,12 @@ builder.Services.AddSingleton<InterfaceCategory, CategoryRepository>();
 builder.Services.AddSingleton<InterfaceExpense, ExpenseRepository>();
 builder.Services.AddSingleton<InterfaceFinancialSystem, FinancialSystemRepository>();
 builder.Services.AddSingleton<InterfaceFinancialSystemUser, FinancialSystemUserRepository>();
+
+// DOMAIN SERVICE
+builder.Services.AddSingleton<IServiceCategory, ServiceCategory>();
+builder.Services.AddSingleton<IServiceExpense, ServiceExpense>();
+builder.Services.AddSingleton<IServiceFinancialSystem, ServiceFinancialSystem>();
+builder.Services.AddSingleton<IServiceFinancialSystemUser, ServiceFinancialSystemUser>();
 
 var app = builder.Build();
 
