@@ -10,6 +10,9 @@ using Domain.Interfaces.IFinancialSystem;
 using Domain.Interfaces.IFinancialSystemUser;
 using Domain.Interfaces.IServices;
 using Domain.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using WebApi.Token;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +44,38 @@ builder.Services.AddSingleton<IServiceExpense, ServiceExpense>();
 builder.Services.AddSingleton<IServiceFinancialSystem, ServiceFinancialSystem>();
 builder.Services.AddSingleton<IServiceFinancialSystemUser, ServiceFinancialSystemUser>();
 
+// JWT Token
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(option =>
+             {
+                 option.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = false,
+                     ValidateAudience = false,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+
+                     ValidIssuer = "Test.Securiry.Bearer",
+                     ValidAudience = "Test.Securiry.Bearer",
+                     IssuerSigningKey = JwtSecurityKey.Create("Secret_Key_12345678")
+                 };
+
+                 option.Events = new JwtBearerEvents
+                 {
+                     OnAuthenticationFailed = context =>
+                     {
+                         Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                         return Task.CompletedTask;
+                     },
+                     OnTokenValidated = context =>
+                     {
+                         Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                         return Task.CompletedTask;
+                     }
+                 };
+             });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,6 +87,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// new... jwt
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
