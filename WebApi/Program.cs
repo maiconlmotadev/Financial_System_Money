@@ -25,8 +25,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ContextBase>(options =>
                options.UseSqlServer(
-                   // builder.Configuration.GetConnectionString("DefaultConnection")));
-                   builder.Configuration.GetConnectionString("")));
+                    builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ContextBase>();
 

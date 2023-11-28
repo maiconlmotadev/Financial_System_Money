@@ -41,7 +41,8 @@ namespace Infrastructure.Configuration
 
         public string GetConnectionString()
         {
-            return "Data Source=WINMACBOOK\\SQLEXPRESS;Initial Catalog=dbFinancialSystem; User ID=sa; Password=0000;";
+            return "Data Source=WINMACBOOK\\SQLEXPRESS;Initial Catalog=dbFinancialSystem; Integrated Security=False; User ID=sa; Password=0000; Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+            // return "Data Source=WINMACBOOK\\SQLEXPRESS;Initial Catalog=dbFinancialSystem; User ID=sa; Password=0000;";
         }
     }
 }
