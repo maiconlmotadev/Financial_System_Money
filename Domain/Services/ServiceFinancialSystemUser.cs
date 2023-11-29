@@ -18,7 +18,7 @@ namespace Domain.Services
             _interfaceFinancialSystemUser = interfaceFinancialSystemUser;
         }
 
-        public async Task RegisterUser(FinancialSystemUser financialSystemUser)
+        public async Task RegisterUserInTheSystem(FinancialSystemUser financialSystemUser)
         {
             await _interfaceFinancialSystemUser.Add(financialSystemUser);
         }

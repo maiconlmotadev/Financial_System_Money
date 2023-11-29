@@ -20,7 +20,7 @@ namespace Infrastructure.Repository
             _OptoinBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IList<FinancialSystem>> FinancialSystemsUserList(string emailUser)
+        public async Task<IList<FinancialSystem>> ListFinancialSystemsUser(string emailUser)
         {
             using (var db = new ContextBase(_OptoinBuilder))
             {

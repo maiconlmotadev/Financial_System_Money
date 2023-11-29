@@ -9,6 +9,6 @@ namespace Domain.Interfaces.IServices
 {
     public interface IServiceFinancialSystemUser
     {
-        Task RegisterUser(FinancialSystemUser financialSystemUser);
+        Task RegisterUserInTheSystem(FinancialSystemUser financialSystemUser);
     }
 }
