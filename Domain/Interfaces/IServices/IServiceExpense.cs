@@ -11,5 +11,6 @@ namespace Domain.Interfaces.IServices
     {
         Task AddExpense(Expense expense);
         Task UpdateExpense(Expense expense);
+        Task<object> LoadsGraphics(string userEmail);
     }
 }

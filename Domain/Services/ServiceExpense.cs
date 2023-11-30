@@ -32,6 +32,33 @@ namespace Domain.Services
             }
         }
 
+        public async Task<object> LoadsGraphics(string userEmail)
+        {
+            var userExpense = await _interfaceExpense.ListUserExpenses(userEmail);
+            var previousExpenses = await _interfaceExpense.ListUserExpensesNotPayingPreviousMonths(userEmail);
+
+            var userExpensesNotPayingPreviousMonths = previousExpenses.Any() ?
+                previousExpenses.ToList().Sum(x => x.Price) : 0;
+
+            var expensesPaid = userExpense.Where(e => e.Paid && e.TypeExpense == Entities.Enums.EnumTypeExpense.Expenses)
+                .Sum(x => x.Price);
+
+            var pendingExpenses = userExpense.Where(e => !e.Paid && e.TypeExpense == Entities.Enums.EnumTypeExpense.Expenses)
+                .Sum(x => x.Price);
+
+            var investments = userExpense.Where(e => e.TypeExpense == Entities.Enums.EnumTypeExpense.Investment)
+                .Sum(x => x.Price);
+
+            return new
+            {
+                success = "Ok",
+                expenses_Paid = expensesPaid,
+                pending_Expenses = pendingExpenses,
+                userExpenses_NotPayingPreviousMonths = userExpensesNotPayingPreviousMonths,
+                investments = investments
+            };
+        }
+
         public async Task UpdateExpense(Expense expense)
         {
             var date = DateTime.UtcNow;

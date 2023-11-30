@@ -19,7 +19,7 @@ namespace Infrastructure.Repository
             _OptoinBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IList<Category>> UserCategoriesList(string emailUser)
+        public async Task<IList<Category>> ListUserCategories(string emailUser)
         {
             using (var db = new ContextBase(_OptoinBuilder))
             {

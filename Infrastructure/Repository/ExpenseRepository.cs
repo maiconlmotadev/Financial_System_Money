@@ -21,7 +21,7 @@ namespace Infrastructure.Repository
             _OptoinBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IList<Expense>> UserExpensesList(string emailUser)
+        public async Task<IList<Expense>> ListUserExpenses(string emailUser)
         {
             using (var db = new ContextBase(_OptoinBuilder))
             {
@@ -35,7 +35,7 @@ namespace Infrastructure.Repository
             }
         }         
 
-        public async Task<IList<Expense>> UserExpensesListNotPayingPreviousMonths(string emailUser)
+        public async Task<IList<Expense>> ListUserExpensesNotPayingPreviousMonths(string emailUser)
         {
             using (var db = new ContextBase(_OptoinBuilder))
             {
