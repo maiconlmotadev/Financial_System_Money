@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces.ICategories;
-using Domain.Interfaces.IExpenses;
+using Domain.Interfaces.IExpense;
 using Domain.Interfaces.IServices;
 using Domain.Services;
 using Entities.Entities;
@@ -26,7 +26,7 @@ namespace WebApi.Controllers
         [Produces("application/json")]
         public async Task<object> ListUserExpenses(string emailUser)
         {
-            return _InterfaceExpense.ListUserExpenses(emailUser);
+            return await _InterfaceExpense.ListUserExpenses(emailUser);
         }
 
         [HttpPost("/api/AddExpense")]

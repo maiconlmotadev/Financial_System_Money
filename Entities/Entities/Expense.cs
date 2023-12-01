@@ -26,6 +26,6 @@ namespace Entities.Entities
         [ForeignKey("Categories")]
         [Column(Order = 1)]
         public int CategoriesId { get; set; }
-        public virtual Category Categories { get; set; }
+       // public virtual Category Categories { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Domain.Interfaces.Generics;
-using Domain.Interfaces.IExpenses;
+using Domain.Interfaces.IExpense;
 using Entities.Entities;
 using Infrastructure.Configuration;
 using Infrastructure.Repository.Generics;

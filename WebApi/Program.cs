@@ -5,7 +5,7 @@ using Domain.Interfaces.Generics;
 using Infrastructure.Repository.Generics;
 using Domain.Interfaces.ICategories;
 using Infrastructure.Repository;
-using Domain.Interfaces.IExpenses;
+using Domain.Interfaces.IExpense;
 using Domain.Interfaces.IFinancialSystem;
 using Domain.Interfaces.IFinancialSystemUser;
 using Domain.Interfaces.IServices;

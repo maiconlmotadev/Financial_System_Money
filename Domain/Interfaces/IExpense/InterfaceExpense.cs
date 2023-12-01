@@ -7,7 +7,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.IExpenses
+namespace Domain.Interfaces.IExpense
 {
     public interface InterfaceExpense : InterfaceGeneric<Expense>
     {

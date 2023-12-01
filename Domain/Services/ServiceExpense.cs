@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.IExpenses;
+﻿using Domain.Interfaces.IExpense;
 using Domain.Interfaces.IServices;
 using Entities.Entities;
 using System;
