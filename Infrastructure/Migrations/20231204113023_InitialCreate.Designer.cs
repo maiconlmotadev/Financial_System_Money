@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20231128110747_inicial")]
-    partial class inicial
+    [Migration("20231204113023_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,8 +112,6 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SystemId");
-
                     b.ToTable("Categories");
                 });
 
@@ -125,7 +123,7 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoriesId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int")
                         .HasColumnOrder(1);
 
@@ -164,8 +162,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoriesId");
 
                     b.ToTable("Expenses");
                 });
@@ -369,28 +365,6 @@ namespace Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Entities.Category", b =>
-                {
-                    b.HasOne("Entities.Entities.FinancialSystem", "FinancialSystem")
-                        .WithMany()
-                        .HasForeignKey("SystemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FinancialSystem");
-                });
-
-            modelBuilder.Entity("Entities.Entities.Expense", b =>
-                {
-                    b.HasOne("Entities.Entities.Category", "Categories")
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Entities.Entities.FinancialSystemUser", b =>

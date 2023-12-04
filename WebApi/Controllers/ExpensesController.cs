@@ -27,6 +27,11 @@ namespace WebApi.Controllers
         public async Task<object> ListUserExpenses(string emailUser)
         {
             return await _InterfaceExpense.ListUserExpenses(emailUser);
+
+            //var result = emailUser;
+            //Console.WriteLine(result);
+
+            //return new JsonResult(emailUser);
         }
 
         [HttpPost("/api/AddExpense")]

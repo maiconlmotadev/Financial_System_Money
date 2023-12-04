@@ -13,16 +13,16 @@ namespace Infrastructure.Repository.Generics
 {
     public class GenericsRepository<T> : InterfaceGeneric<T>, IDisposable where T : class
     {
-        private readonly DbContextOptions<ContextBase> _DbContextOptions;
+        private readonly DbContextOptions<ContextBase> _OptionsBuilder;
 
         public GenericsRepository()   
         {
-            _DbContextOptions = new DbContextOptions<ContextBase>();
+            _OptionsBuilder = new DbContextOptions<ContextBase>();
         }
 
         public async Task Add(T Object)
         {
-            using (var data = new ContextBase(_DbContextOptions))
+            using (var data = new ContextBase(_OptionsBuilder))
             {
                 await data.Set<T>().AddAsync(Object);
                 await data.SaveChangesAsync();
@@ -31,7 +31,7 @@ namespace Infrastructure.Repository.Generics
 
         public async Task Delete(T Object)
         {
-            using (var data = new ContextBase(_DbContextOptions))
+            using (var data = new ContextBase(_OptionsBuilder))
             {
                 data.Set<T>().Remove(Object);
                 await data.SaveChangesAsync();
@@ -40,7 +40,7 @@ namespace Infrastructure.Repository.Generics
 
         public async Task<T> GetEntityById(int Id)
         {
-            using (var data = new ContextBase(_DbContextOptions))
+            using (var data = new ContextBase(_OptionsBuilder))
             {
                 return await data.Set<T>().FindAsync(Id);
             }
@@ -48,7 +48,7 @@ namespace Infrastructure.Repository.Generics
 
         public async Task<List<T>> List()
         {
-            using (var data = new ContextBase(_DbContextOptions))
+            using (var data = new ContextBase(_OptionsBuilder))
             {
                 return await data.Set<T>().ToListAsync();
             }
@@ -56,7 +56,7 @@ namespace Infrastructure.Repository.Generics
 
         public async Task Update(T Object)
         {
-            using (var data = new ContextBase(_DbContextOptions))
+            using (var data = new ContextBase(_OptionsBuilder))
             {
                 data.Set<T>().Update(Object);
                 await data.SaveChangesAsync();

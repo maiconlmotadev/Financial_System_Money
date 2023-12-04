@@ -23,9 +23,9 @@ namespace Entities.Entities
         public bool Paid { get; set; }
         public bool DelayedExpense { get; set;}
 
-        [ForeignKey("Categories")]
+        [ForeignKey("Category")]
         [Column(Order = 1)]
-        public int CategoriesId { get; set; }
+        public int CategoryId { get; set; }
        // public virtual Category Categories { get; set; }
     }
 }
