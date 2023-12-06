@@ -84,6 +84,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Cors configuration "acesso do front ao back"
+var devClient = "https://localhost:44365";
+
+app.UseCors(x =>
+x.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader()
+.WithMethods(devClient));
+
 app.UseHttpsRedirection();
 
 // new... jwt
