@@ -10,12 +10,12 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class FinancialSystemController : ControllerBase
+    public class FinancialSystemsController : ControllerBase
     {
         private readonly InterfaceFinancialSystem _InterfaceFinancialSystem;
         private readonly IServiceFinancialSystem _IServiceFinancialSystem;
 
-        public FinancialSystemController(InterfaceFinancialSystem InterfaceFinancialSystem, IServiceFinancialSystem IServiceFinancialSystem)
+        public FinancialSystemsController(InterfaceFinancialSystem InterfaceFinancialSystem, IServiceFinancialSystem IServiceFinancialSystem)
         {
             _InterfaceFinancialSystem = InterfaceFinancialSystem;
             _IServiceFinancialSystem = IServiceFinancialSystem;
