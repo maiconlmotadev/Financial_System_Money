@@ -1,4 +1,4 @@
-MyMoney - Financial system
+Money - Financial system
 
 - Expense management system
 - Study and practice some concepts
