@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MyMoney
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
@@ -25,3 +26,21 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+=======
+Money - Financial system
+
+- Expense management system
+- Study and practice some concepts
+
+BACKEND
+- DDD (Domain Driven Design)
+- Identity Microsoft: User Management
+- Framework: ASP.NET 7
+- Programming language: C#
+- SQL Server Database
+
+FRONTEND
+- Angular
+- Typescript
+- CSS
+>>>>>>> f1596893a4a0396bbb5cf16a02db0dd74fceba2c

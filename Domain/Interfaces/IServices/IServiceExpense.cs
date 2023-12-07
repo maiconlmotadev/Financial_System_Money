@@ -1,0 +1,16 @@
+﻿using Entities.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Interfaces.IServices
+{
+    public interface IServiceExpense
+    {
+        Task AddExpense(Expense expense);
+        Task UpdateExpense(Expense expense);
+        Task<object> LoadsGraphics(string userEmail);
+    }
+}
