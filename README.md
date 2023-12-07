@@ -1,4 +1,7 @@
-Financial system... 
+Money - Financial system
+
+- Expense management system
+- Study and practice some concepts
 
 BACKEND
 - DDD (Domain Driven Design)
