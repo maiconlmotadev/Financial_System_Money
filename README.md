@@ -3,8 +3,6 @@ Money - Financial system
 * Study and practice some concepts.
 * Still in development ;) 
 
-![Screenshot_2](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/a8899038-824b-4590-b22f-1787b6247b8a)
-
 - Expense management system
 
 BACKEND
@@ -19,3 +17,5 @@ FRONTEND
 - Angular
 - Typescript
 - CSS
+
+![Screenshot_2](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/a8899038-824b-4590-b22f-1787b6247b8a)
