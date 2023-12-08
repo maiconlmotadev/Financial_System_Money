@@ -10,6 +10,7 @@ BACKEND
 - SQL Server Database
 - 
 FRONTEND
+  (Project inside the money folder)
 - Angular
 - Typescript
 - CSS
