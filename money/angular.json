@@ -71,11 +71,7 @@
               "browserTarget": "money:build:development"
             }
           },
-          "defaultConfiguration": "development",
-
-          "options": {
-            "port": 44365
-          }
+          "defaultConfiguration": "development"
 
         },
         "extract-i18n": {

@@ -86,13 +86,13 @@ if (app.Environment.IsDevelopment())
 }
 
 // Cors configuration "acesso do front ao back"
-var devClient = "https://localhost:44365";
+var devClient = "http://localhost:4200";
 
 app.UseCors(x =>
 x.AllowAnyOrigin()
 .AllowAnyMethod()
 .AllowAnyHeader()
-.WithMethods(devClient));
+.WithOrigins(devClient));
 
 app.UseHttpsRedirection();
 

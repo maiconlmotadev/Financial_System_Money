@@ -23,10 +23,13 @@ namespace WebApi.Controllers
 
         [AllowAnonymous]
         [Produces("application/json")]
-        [HttpPost("/api/CreateToken")]
+        [HttpPost("/api/TokenCreate")]
         public async Task<IActionResult> TokenCreate([FromBody] InputModel input)
         {
-            if(string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Password))
+
+             // Console.WriteLine($"Email: {input?.Email}, Password: {input?.Password}");
+
+            if (string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Password))
             {
                 return Unauthorized();
             }
@@ -40,7 +43,7 @@ namespace WebApi.Controllers
                     .AddIssuer("Test.Securiry.Bearer")
                     .AddAudience("Test.Securiry.Bearer")
                     .AddClaim("UserNumberAPI", "1")
-                    .AddExpiry(5)
+                    .AddExpiry(50)
                     .Builder();
 
                 return Ok(token.value);

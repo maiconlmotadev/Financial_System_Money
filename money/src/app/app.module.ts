@@ -14,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http'
   declarations: [
     AppComponent,
     LoginComponent
+
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule,
     HttpClientModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
