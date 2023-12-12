@@ -38,6 +38,7 @@ export class LoginComponent {
     this.loginService.login(this.dataForm["email"].value, this.dataForm["password"].value).subscribe(
       token => { 
         alert(token);
+        this.router.navigate(['/dashboard']);
       },
       err => {
         alert('Ocorreu um erro')
