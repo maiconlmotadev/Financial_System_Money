@@ -1,0 +1,38 @@
+.container-sidebar
+{
+    position: fixed;
+    padding-top: 72px;
+    width: 110px;
+    min-height: 700px;
+    height: -webkit-fill-available;
+
+    background: #d0d7d8;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+
+    .group-menu{}
+
+    .container-icon-menu{
+        padding: 8px;
+    }
+
+    .box-menu{
+        width: 94px;
+        height: 42px;
+        border-radius: 4px;
+        background: rgba(180, 178, 178, 0.614);
+        cursor: pointer;
+    } 
+    
+    .box-menu-select{
+        background: #b7cccb !important;
+    }
+
+    .box-menu-text{
+        font-size: 14px;
+        display: flex;
+        justify-content: center; // centraliza horizontal
+        align-items: center; // centraliza vertical
+        color: #181717fe;
+        font-weight: bold;
+    }
+}

@@ -1,3 +1,4 @@
+import { MenuService } from './../../services/menu.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  constructor(public menuService: MenuService){
+
+  }
+
+  ngOnInit(){
+    this.menuService.selectMenu = 1;
+  }
 }
