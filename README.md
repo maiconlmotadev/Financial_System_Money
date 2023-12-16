@@ -16,7 +16,8 @@ FRONTEND
 - Typescript
 - CSS
 
-![Screenshot_1](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/6f61ef98-ee38-4e23-a223-e4665196528e)
+
+![Screenshot_2](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/1cd22fca-b7c7-46ae-9db6-890c81691343)
 
 
 ![Screenshot_1](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/158f46f2-796d-467f-8431-b0c91cbc76f9)
