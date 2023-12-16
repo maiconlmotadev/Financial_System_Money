@@ -10,17 +10,25 @@
             </div>
         </div>
 
-        <div class="form-page">
+        <form class="form-page" [formGroup]="systemForm" (submit)="send()">
 
             <div class="row">
                 <div class="group-row">
                     <label>System</label>
-                    <input type="text"/>
+                    <input type="text" name="name" id="name" placeholder="Name" formControlName="name" required/>
+                    <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] && systemForm.get('name')?.touched">
+                        Required field!
+                    </label>
                 </div>
-
             </div>
 
-        </div>
+            <div class="row">
+                <div class="group-row">
+                    <input type="submit" value="Save" class="btn-primary"/>
+                </div>
+            </div>
+
+        </form>
 
     </div>
 
