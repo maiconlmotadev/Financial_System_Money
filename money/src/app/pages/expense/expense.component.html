@@ -1,3 +1,81 @@
 <navbar></navbar>
 <sidebar></sidebar>
 
+<navbar></navbar>
+<sidebar></sidebar>
+
+<navbar></navbar>
+<sidebar></sidebar>
+
+<div class="container-base">
+
+    <div class="content-page">
+        <div class="card-header">
+            <div class="card-title">
+                Expenses Register
+            </div>
+        </div>
+
+        <form class="form-page" [formGroup]="expenseForm" (submit)="send()">
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" formControlName="name" required/>
+                    <label class="error-input" *ngIf="expenseForm.get('name')?.errors?.['required'] && expenseForm.get('name')?.touched">
+                        Required field!
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Amount</label>
+                    <input type="number" name="amount" id="value" placeholder="Amount" formControlName="amount" required/>
+                    <label class="error-input" *ngIf="expenseForm.get('amount')?.errors?.['required'] && expenseForm.get('amount')?.touched">
+                        Required field!
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Due Date</label>
+                    <input type="date" name="amount" id="date" placeholder="Date" formControlName="date" required/>
+                    <label class="error-input" *ngIf="expenseForm.get('date')?.errors?.['required'] && expenseForm.get('date')?.touched">
+                        Required field!
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Systems</label>
+                    
+                    <ng-select class="select-default" [(ngModel)]="systemSelect" [items]="systemsList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false"></ng-select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="group-row">
+                    <label>Category</label>
+                    
+                    <ng-select class="select-default" [(ngModel)]="categorySelect" [items]="categoriesList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false"></ng-select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="group-row">
+                    <input type="submit" value="Save" class="btn-primary"/>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+

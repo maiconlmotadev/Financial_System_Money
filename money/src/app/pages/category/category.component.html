@@ -9,7 +9,7 @@
     <div class="content-page">
         <div class="card-header">
             <div class="card-title">
-                Systems Register
+                Categories Register
             </div>
         </div>
 
@@ -27,9 +27,9 @@
 
             <div class="row">
                 <div class="group-row">
-                    <label>Name</label>
+                    <label>Systems</label>
                     
-                    <ng-select class="select-default" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false"></ng-select>
+                    <ng-select class="select-default" [(ngModel)]="systemSelect" [items]="systemsList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false"></ng-select>
                 </div>
             </div>
 

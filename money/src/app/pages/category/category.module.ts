@@ -17,6 +17,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
             CategoryRoutingModule,
             NavbarModule,
             SidebarModule,
+            
             FormsModule,
             ReactiveFormsModule,
             NgSelectModule

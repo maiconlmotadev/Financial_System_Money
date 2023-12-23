@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/menu.service';
 import { Component } from '@angular/core';
+import { SelectModel } from 'src/app/models/SelectModel';
 
 @Component({
   selector: 'app-category',
@@ -11,6 +12,9 @@ export class CategoryComponent {
 
   constructor(public menuService: MenuService, private formBuilder: FormBuilder){
   }
+
+  systemsList = new Array<SelectModel>();
+  systemSelect = new SelectModel();
 
   categoryForm: FormGroup;
 

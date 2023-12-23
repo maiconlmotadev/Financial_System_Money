@@ -4,6 +4,8 @@ import { ExpenseComponent } from "./expense.component";
 import { ExpenseRoutingModule } from "./expense-routing.module";
 import { NavbarModule } from "src/app/components/navbar/navbar.module";
 import { SidebarModule } from "src/app/components/sidebar/sidebar.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule(
     {
@@ -13,7 +15,11 @@ import { SidebarModule } from "src/app/components/sidebar/sidebar.module";
             CommonModule,
             ExpenseRoutingModule,
             NavbarModule,
-            SidebarModule
+            SidebarModule,
+            
+            FormsModule,
+            ReactiveFormsModule,
+            NgSelectModule
         ]
     }
 )
