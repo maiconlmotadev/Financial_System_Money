@@ -26,7 +26,12 @@ export class ExpenseComponent {
 
     this.expenseForm = this.formBuilder.group(
       {
-        name: ['', [Validators.required]]
+        name: ['', [Validators.required]],
+        
+        amount: ['', [Validators.required]],
+        date: ['', [Validators.required]],
+        systemSelect: ['', [Validators.required]],
+        categorySelect: ['', [Validators.required]],
       }
     )
   }
