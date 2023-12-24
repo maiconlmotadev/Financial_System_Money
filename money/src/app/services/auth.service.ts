@@ -25,6 +25,11 @@ export class AuthService{
         this.userAuthPortal = status;
     }
 
+    UserIsAuth(): Promise<boolean>{
+        this.userAuthPortal = localStorage.getItem('userAuthPortal') == 'true';
+        return Promise.resolve(this.userAuthPortal);
+    }
+
     setToken(token: string){
         localStorage.setItem('token', token)
         this.token = token;
