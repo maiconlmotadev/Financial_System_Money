@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,7 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
 
 export class LoginComponent {
   
-  constructor( public formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
+  constructor( public formBuilder: FormBuilder, private router: Router, private loginService: LoginService, public authService: AuthService) {
 
   }
 
@@ -37,6 +38,9 @@ export class LoginComponent {
   loginUser() {
     this.loginService.login(this.dataForm["email"].value, this.dataForm["password"].value).subscribe(
       token => { 
+        this.authService.setToken(token);
+        this.authService.authUser(true);
+        
         this.router.navigate(['/dashboard']);
       },
       err => {
