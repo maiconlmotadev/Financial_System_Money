@@ -21,4 +21,8 @@ export class SystemService {
     ListUserFinancialSystems(emailUser: string){
         return this.httpClient.get(`${this.baseURL}/ListUserFinancialSystems?emailUser=${emailUser}`);
     }
+
+    RegisterUserInTheSystem(systemId: number, userEmail: string){
+        return this.httpClient.post<any>(`${this.baseURL}/RegisterUserInTheSystem?systemId=${systemId}&userEmail=${userEmail}`, null)
+    }
 }
