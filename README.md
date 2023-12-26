@@ -23,7 +23,8 @@ FRONTEND
 
 ![Screenshot_1](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/5ee2ccb7-a963-4f4e-8729-487ebb8c59e9)
 
-![Screenshot_2](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/f3bd5200-8dd0-4d83-bd8d-ddd886ace553)
+![Screenshot_3](https://github.com/maiconlmotadev/Financial_System_Money/assets/88989642/15a47c6d-45fe-49a0-9c7d-65a1ccee343a)
+
 
 
 
