@@ -8,4 +8,8 @@ export class FinancialSystem {
     GenerateExpenseCopy: boolean;
     MonthCopy: number;
     YearCopy: number;
+
+    PropertyName: string="";
+    message: string="";
+    notifies: [];
 }

@@ -18,9 +18,9 @@ export class AuthService{
 
     checkToken(){
         return Promise.resolve(true);
-    }
+    }   
 
-    authUser(status: boolean){
+    authUser(status: boolean){    
         localStorage.setItem('userAuthPortal', JSON.stringify(status));
         this.userAuthPortal = status;
     }

@@ -1,6 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/menu.service';
 import { Component } from '@angular/core';
+import { FinancialSystem } from 'src/app/models/FinancialSystem';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-system',
@@ -9,7 +11,7 @@ import { Component } from '@angular/core';
 })
 export class SystemComponent {
 
-  constructor(public menuService: MenuService, private formBuilder: FormBuilder){
+  constructor(public menuService: MenuService, private formBuilder: FormBuilder, public systemService: SystemService){
   }
 
   systemForm: FormGroup;
@@ -32,7 +34,30 @@ export class SystemComponent {
     debugger
     var data = this.formData();
 
-    alert(data["name"].value);
+    let item = new FinancialSystem();
+    item.Name = data["name"].value;
+
+    item.Id = 0;
+    item.Month = 0;
+    item.Year = 0;
+    item.ClosingDay = 0;
+    item.GenerateExpenseCopy = true;
+    item.MonthCopy = 0;
+    item.YearCopy=  0;
+
+    this.systemService.AddFinancialSystem(item)
+    .subscribe((response: FinancialSystem) => {
+      this.systemForm.reset();
+
+      this.systemService.RegisterUserInTheSystem(response.Id, "tibiocoelho@gmail.com")
+      .subscribe((response: any) => {
+        debugger
+      })
+    })
+    , (error) => console.error(error), () => {}
   }
+
+
+
 
 }
