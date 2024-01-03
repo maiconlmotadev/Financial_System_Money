@@ -39,6 +39,7 @@ export class LoginComponent {
     this.loginService.login(this.dataForm["email"].value, this.dataForm["password"].value).subscribe(
       token => { 
         this.authService.setToken(token);
+        this.authService.setEmailUser(this.dataForm["email"].value);
         this.authService.authUser(true);
         
         this.router.navigate(['/dashboard']);

@@ -3,6 +3,7 @@ import { MenuService } from '../../services/menu.service';
 import { Component } from '@angular/core';
 import { FinancialSystem } from 'src/app/models/FinancialSystem';
 import { SystemService } from 'src/app/services/system.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-system',
@@ -11,7 +12,8 @@ import { SystemService } from 'src/app/services/system.service';
 })
 export class SystemComponent {
 
-  constructor(public menuService: MenuService, private formBuilder: FormBuilder, public systemService: SystemService){
+  constructor(public menuService: MenuService, public formBuilder: FormBuilder, public systemService: SystemService,
+    public authService: AuthService){
   }
 
   systemForm: FormGroup;
@@ -49,7 +51,7 @@ export class SystemComponent {
     .subscribe((response: FinancialSystem) => {
       this.systemForm.reset();
 
-      this.systemService.RegisterUserInTheSystem(response.Id, "tibiocoelho@gmail.com")
+      this.systemService.RegisterUserInTheSystem(response.Id, this.authService.getEmailUser())
       .subscribe((response: any) => {
         debugger
       })

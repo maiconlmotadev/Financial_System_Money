@@ -10,7 +10,7 @@ import { SelectModel } from 'src/app/models/SelectModel';
 })
 export class ExpenseComponent {
 
-  constructor(public menuService: MenuService, private formBuilder: FormBuilder){
+  constructor(public menuService: MenuService, public formBuilder: FormBuilder){
   }
 
   systemsList = new Array<SelectModel>();

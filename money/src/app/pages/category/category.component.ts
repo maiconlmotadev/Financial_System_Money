@@ -2,6 +2,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from '../../services/menu.service';
 import { Component } from '@angular/core';
 import { SelectModel } from 'src/app/models/SelectModel';
+import { SystemService } from 'src/app/services/system.service';
+import { FinancialSystem } from 'src/app/models/FinancialSystem';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-category',
@@ -10,7 +13,8 @@ import { SelectModel } from 'src/app/models/SelectModel';
 })
 export class CategoryComponent {
 
-  constructor(public menuService: MenuService, private formBuilder: FormBuilder){
+  constructor(public menuService: MenuService, public formBuilder: FormBuilder, public systemService: SystemService,
+    public authService: AuthService){
   }
 
   systemsList = new Array<SelectModel>();
@@ -26,6 +30,8 @@ export class CategoryComponent {
         name: ['', [Validators.required]]
       }
     )
+
+    this.ListUserFinancialSystems();
   }
 
   formData(){
@@ -37,6 +43,26 @@ export class CategoryComponent {
     var data = this.formData();
 
     alert(data["name"].value);
+  }
+
+  ListUserFinancialSystems(){
+    this.systemService.ListUserFinancialSystems(this.authService.getEmailUser())
+      .subscribe((response: Array<FinancialSystem>) => {
+
+        var listFinancialSystem = [];
+
+        response.forEach(x => {
+          var item = new SelectModel();
+          item.id = x.Id.toString();
+          item.name = x.Name;
+
+          listFinancialSystem.push(item);
+        });
+
+        this.systemsList = listFinancialSystem;
+      }
+      )
+
   }
 
 }
