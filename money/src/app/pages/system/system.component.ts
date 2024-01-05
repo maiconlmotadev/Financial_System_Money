@@ -12,9 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SystemComponent {
 
-  constructor(public menuService: MenuService, public formBuilder: FormBuilder, public systemService: SystemService,
-    public authService: AuthService){
-  }
+  constructor(
+    public menuService: MenuService, 
+    public formBuilder: FormBuilder, 
+    public systemService: SystemService,
+    public authService: AuthService){ }
 
   systemForm: FormGroup;
 
@@ -51,12 +53,13 @@ export class SystemComponent {
     .subscribe((response: FinancialSystem) => {
       this.systemForm.reset();
 
-      this.systemService.RegisterUserInTheSystem(response.Id, this.authService.getEmailUser())
+      this.systemService.RegisterUserInTheSystem(response.Id,this.authService.getEmailUser())
       .subscribe((response: any) => {
         debugger
-      })
-    })
-    , (error) => console.error(error), () => {}
+      } , (error) => console.error(error), () => {})
+      
+    } , (error) => console.error(error), () => {})
+
   }
 
 

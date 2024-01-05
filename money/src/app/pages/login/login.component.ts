@@ -41,7 +41,6 @@ export class LoginComponent {
         this.authService.setToken(token);
         this.authService.setEmailUser(this.dataForm["email"].value);
         this.authService.authUser(true);
-        
         this.router.navigate(['/dashboard']);
       },
       err => {

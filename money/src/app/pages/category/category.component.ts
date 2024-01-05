@@ -13,16 +13,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CategoryComponent {
 
-  constructor(public menuService: MenuService, public formBuilder: FormBuilder, public systemService: SystemService,
-    public authService: AuthService){
-  }
+  constructor(
+    public menuService: MenuService, 
+    public formBuilder: FormBuilder, 
+    public systemService: SystemService,
+    public authService: AuthService){ }
 
   systemsList = new Array<SelectModel>();
   systemSelect = new SelectModel();
 
   categoryForm: FormGroup;
 
-  ngOnInit(){
+  ngOnInit() {
     this.menuService.selectMenu = 3;
 
     this.categoryForm = this.formBuilder.group(
@@ -44,8 +46,8 @@ export class CategoryComponent {
 
     alert(data["name"].value);
   }
-
-  ListUserFinancialSystems(){
+  
+  ListUserFinancialSystems(){ 
     this.systemService.ListUserFinancialSystems(this.authService.getEmailUser())
       .subscribe((response: Array<FinancialSystem>) => {
 
@@ -60,9 +62,21 @@ export class CategoryComponent {
         });
 
         this.systemsList = listFinancialSystem;
+
+        console.log('dentro do metodo');
+        console.log(this.systemsList);
+        console.log('listFinancialSystem:', listFinancialSystem);
+        
       }
       )
+      console.log('fora do metodo');
+      console.log(this.systemsList);
 
+      console.log(this.systemSelect);
+
+      
   }
+
+  
 
 }
