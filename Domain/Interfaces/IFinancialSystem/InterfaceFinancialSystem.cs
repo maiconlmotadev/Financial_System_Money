@@ -10,6 +10,6 @@ namespace Domain.Interfaces.IFinancialSystem
 {
     public interface InterfaceFinancialSystem : InterfaceGeneric<FinancialSystem>
     {
-        Task<IList<FinancialSystem>> ListFinancialSystemsUser(string emailUser);
+        Task<IList<FinancialSystem>> ListUserFinancialSystems(string emailUser);
     }
 }
